@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2015 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+        <ScrollView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:stretchColumns="1">
+
+                <ImageView
+                    android:layout_marginTop="56dp"
+                    android:layout_height="200dp"
+                    android:layout_width="match_parent"
+                    android:background="@mipmap/a"/>
+
+                <Button
+                    android:id="@+id/btReproducir"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_margin="20dp"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:text="Conocer genero 'Rock'"
+                    app:srcCompat="@drawable/ic_account"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="Conocenos"
+                    android:textSize="30dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="@color/teal"/>
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:padding="3dip"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="¿Cual es tu genero favorito?"
+                    android:textSize="25dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="@color/teal"/>
+
+                <TableRow>
+                    <ImageView
+                        android:layout_height="50dp"
+                        android:layout_width="60dp"
+                        android:src="@mipmap/a"/>
+                    <TextView
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:text="Rock"
+                        android:textSize="30dp"
+                        android:gravity="right"
+                        android:padding="3dip"
+                        android:layout_gravity="center"/>
+
+                    <CheckBox
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:checked="false" />
+                </TableRow>
+            </TableLayout>
+        </ScrollView>
