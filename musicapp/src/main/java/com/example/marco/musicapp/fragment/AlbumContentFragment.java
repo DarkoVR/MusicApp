@@ -20,6 +20,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.marco.musicapp.R;
 import com.example.marco.musicapp.api.adapter.AlbumAdapter;
 import com.example.marco.musicapp.api.model.Album;
+import com.example.marco.musicapp.web.uri;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,7 +33,7 @@ import java.util.List;
 import java.util.Map;
 
 public class AlbumContentFragment extends Fragment {
-    private final String url="http://192.168.0.26:4000/api/v1/music/album";
+    private final String url=uri.protocol+uri.ip+uri.port+"/api/v1/music/album";
     private final String token="SFMyNTY.eyJzaWduZWQiOjE1MTI3NTUxODMsImRhdGEiOjJ9.SdNYgEbqz9bUHUyiqDGZ88a5Rz34jZ7-ouQez4J2kls";
 
     //String[] productos={"Celular","Tablet","Televisor"};

@@ -57,7 +57,7 @@
             android:layout_gravity="right|bottom"
             android:layout_marginBottom="@dimen/md_keylines"
             android:layout_marginRight="@dimen/md_keylines"
-            app:srcCompat="@drawable/ic_add"
+            app:srcCompat="@drawable/ic_autorenew"
             android:tint="@color/white"
             tools:ignore="VectorDrawableCompat" />
     </android.support.design.widget.CoordinatorLayout>

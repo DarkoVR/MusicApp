@@ -26,28 +26,9 @@ public class RegisterContentFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button btIngresar = (Button) view.findViewById(R.id.btLogin);
-
-        // Adding Floating Action Button to bottom right of main view
         FloatingActionButton fab = (FloatingActionButton) ((MainActivity) getActivity()).findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast toast = Toast.makeText(getContext(), "Magia!", Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
-
-        btIngresar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Snackbar.make(v, "Button", Snackbar.LENGTH_LONG).show();
-                Toast toast = Toast.makeText(getContext(), "Button", Toast.LENGTH_SHORT);
-                toast.show();
-                ((MainActivity) getActivity()).doIncrease();
-
-            }
-        });
+        fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_autorenew));
+        fab.setVisibility(FloatingActionButton.INVISIBLE);
 
     }
 }

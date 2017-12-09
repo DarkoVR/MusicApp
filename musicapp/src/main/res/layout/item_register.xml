@@ -21,30 +21,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:layout_marginTop="70dp">
 
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:stretchColumns="1"
-        android:layout_marginTop="70dp">
+        android:stretchColumns="1">
 
         <android.support.v7.widget.AppCompatImageView
             android:layout_marginHorizontal="130dp"
-            android:layout_marginBottom="60dp"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:background="@drawable/user_icon"/>
+            android:background="@drawable/user_icon"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Registro"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textColor="@color/teal"
+            android:layout_marginBottom="20dp"/>
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:text="Ingresa tu usuario"
+            android:text="Correo"
             android:textSize="20dp"/>
         <EditText
-            android:id="@+id/txtUser"
+            android:id="@+id/txtUserR"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp" />
@@ -52,10 +61,89 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:text="Ingresa tu contraseña"
+            android:text="Contraseña"
             android:textSize="20dp"/>
         <EditText
-            android:id="@+id/txtPassword"
+            android:id="@+id/txtPasswordR"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text="Nombre"
+            android:textSize="20dp"/>
+        <EditText
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text="Primer apellido"
+            android:textSize="20dp"/>
+        <EditText
+            android:id="@+id/txtLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text="Fecha de nacimiento"
+            android:textSize="20dp"/>
+        <EditText
+            android:id="@+id/txtBirth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text="Telefono"
+            android:textSize="20dp"/>
+        <EditText
+            android:id="@+id/txtPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text="Domicilio"
+            android:textSize="20dp"/>
+        <EditText
+            android:id="@+id/txtAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text="Codigo postal"
+            android:textSize="20dp"/>
+        <EditText
+            android:id="@+id/txtZip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text="Codigo de país"
+            android:textSize="20dp"/>
+        <EditText
+            android:id="@+id/txtCountry"
             android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,13 +151,14 @@
             android:layout_marginBottom="30dp"/>
 
         <Button
-            android:id="@+id/btLogin"
+            android:id="@+id/btRegister"
             style="@style/Base.Widget.AppCompat.Button.Colored"
             android:layout_margin="20dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="Ingresar"
-            android:textColor="@color/white" />
+            android:text="Registrarse"
+            android:textColor="@color/white"
+            android:layout_marginBottom="60dp"/>
 
     </TableLayout>
 </ScrollView>
