@@ -36,6 +36,7 @@
             android:tint="@color/button_grey"
             android:title="Ajustes" />
         <item
+            android:id="@+id/menuAccount"
             android:icon="@drawable/ic_account"
             android:tint="@color/button_grey"
             android:title="Inicia sesion" />

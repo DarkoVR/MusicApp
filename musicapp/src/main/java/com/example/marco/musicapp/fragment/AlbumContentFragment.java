@@ -20,7 +20,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.marco.musicapp.R;
 import com.example.marco.musicapp.api.adapter.AlbumAdapter;
 import com.example.marco.musicapp.api.model.Album;
-import com.example.marco.musicapp.web.uri;
+import com.example.marco.musicapp.web.Uri;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,8 +33,8 @@ import java.util.List;
 import java.util.Map;
 
 public class AlbumContentFragment extends Fragment {
-    private final String url=uri.protocol+uri.ip+uri.port+"/api/v1/music/album";
-    private final String token="SFMyNTY.eyJzaWduZWQiOjE1MTI3NTUxODMsImRhdGEiOjJ9.SdNYgEbqz9bUHUyiqDGZ88a5Rz34jZ7-ouQez4J2kls";
+    private final String url= Uri.protocol+ Uri.ip+ Uri.port+"/api/v1/music/album";
+    //private final String token="SFMyNTY.eyJzaWduZWQiOjE1MTI3NTUxODMsImRhdGEiOjJ9.SdNYgEbqz9bUHUyiqDGZ88a5Rz34jZ7-ouQez4J2kls";
 
     //String[] productos={"Celular","Tablet","Televisor"};
     List<Album> productos_list =new ArrayList<Album>();
@@ -62,8 +62,8 @@ public class AlbumContentFragment extends Fragment {
 
     private void load_productos() {
         RequestQueue requestQueue= Volley.newRequestQueue(getContext());
-        JsonArrayRequest jsonArrayRequest =
-                new JsonArrayRequest(Request.Method.GET, url, null,
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                         new Response.Listener<JSONArray>() {
                             @Override
                             public void onResponse(JSONArray response) {
@@ -82,7 +82,7 @@ public class AlbumContentFragment extends Fragment {
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {
                         Map<String, String>  params = new HashMap<String, String>();
-                        params.put("Authorization", token);
+                        //params.put("Authorization", token);
 
                         return params;
                     }
@@ -90,7 +90,6 @@ public class AlbumContentFragment extends Fragment {
         requestQueue.add(jsonArrayRequest);
     }
     public void genera_lista(JSONArray response) {
-        String imagen= "https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn.churchm.ag%2Fwp-content%2Fuploads%2F2015%2F01%2FBethel-Music-We-Will-Not-Be-Shaken-cover-art.jpg&f=1";
         List<String> list =new ArrayList<String>();
         for (int i=0;i<response.length();i++) {
             try {
@@ -98,17 +97,6 @@ public class AlbumContentFragment extends Fragment {
                 String dateStr = jsonObject.getString("release");
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 JSONArray arr2 = jsonObject.getJSONArray("tracklist");
-
-                /*Toast.makeText(getContext(),
-                        jsonObject.getString("title")+"\n"+
-                                jsonObject.getString("cover")+"\n"+
-                                jsonObject.getInt("sale_price")+"\n"+
-                                jsonObject.getInt("purchase_price")+"\n"+
-                                jsonObject.getInt("id")+"\n"+
-                                jsonObject.getString("release")+"\n"+
-                                jsonObject.getJSONArray("tracklist"), Toast.LENGTH_SHORT).show();*/
-
-                //Date birthDate;
 
                 product_list1.add(new Album(
                         jsonObject.getString("title"),

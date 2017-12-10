@@ -31,5 +31,7 @@ public class MainContentFragment extends Fragment {
         FloatingActionButton fab = (FloatingActionButton) ((MainActivity) getActivity()).findViewById(R.id.fab);
         fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_autorenew));
         fab.setVisibility(FloatingActionButton.VISIBLE);
+
+        //((MainActivity) getActivity())
     }
 }

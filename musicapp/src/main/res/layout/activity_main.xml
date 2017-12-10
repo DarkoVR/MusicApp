@@ -39,14 +39,13 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:titleTextColor="@color/teal"/><!-- Changed by Henoch -->
+                app:titleTextColor="@color/white"/><!-- Changed by Henoch -->
         </android.support.design.widget.AppBarLayout>
 
         <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context="com.github.lattuguini.simplestoreapp.ui.MainActivity"
             android:id="@+id/fragment_container"/>
 
 

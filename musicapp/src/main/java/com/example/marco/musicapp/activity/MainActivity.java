@@ -53,6 +53,7 @@ import com.example.marco.musicapp.fragment.MainContentFragment;
 public class MainActivity extends AppCompatActivity {
     private int count = 0;
     private DrawerLayout mDrawerLayout;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // Adding Toolbar to Main screen
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final TextView txtAccount = findViewById(R.id.txtAccount);
         setSupportActionBar(toolbar);
         // Setting ViewPager for each Tabs
         if(savedInstanceState == null)
@@ -68,14 +70,14 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.fragment_container, new MainContentFragment())
                     .commit();
         // Create Navigation drawer and inlfate layout
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         // Adding menu icon to Toolbar
         ActionBar supportActionBar = getSupportActionBar();
         if (supportActionBar != null) {
             VectorDrawableCompat indicator
                     = VectorDrawableCompat.create(getResources(), R.drawable.ic_menu, getTheme());
-            indicator.setTint(ResourcesCompat.getColor(getResources(),R.color.teal,getTheme()));
+            indicator.setTint(ResourcesCompat.getColor(getResources(),R.color.white,getTheme()));
             supportActionBar.setHomeAsUpIndicator(indicator);
             supportActionBar.setDisplayHomeAsUpEnabled(true);
         }
@@ -140,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Snackbar.make(v, "Información sin sentido!", Snackbar.LENGTH_LONG).show();
                 //doIncrease();
+                //ChangeUserAccount("Buenas tardes");
             }
         });
     }
@@ -225,6 +228,14 @@ public class MainActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(getApplicationContext(), "Que paso chavo? cuando te he faltado al respeto", Toast.LENGTH_SHORT);
             toast.show();
         }
+    }
+
+    @SuppressLint("ResourceAsColor")
+    public void ChangeUserAccount(String name){
+        View hView =  navigationView.getHeaderView(0);
+        TextView nav_user = (TextView)hView.findViewById(R.id.txtAccount);
+        nav_user.setText(name);
+
     }
 
     @Override

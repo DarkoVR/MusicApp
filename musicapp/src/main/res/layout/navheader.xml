@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="41dp"
         android:gravity="center"
-        android:text="14030693@itcelaya.edu.mx"
+        android:text="Invitado"
         android:textColor="@color/white"
         android:textSize="17dp" />
 </LinearLayout>
