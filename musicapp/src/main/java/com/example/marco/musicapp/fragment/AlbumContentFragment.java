@@ -34,10 +34,7 @@ import java.util.Map;
 
 public class AlbumContentFragment extends Fragment {
     private final String url= Uri.protocol+ Uri.ip+ Uri.port+"/api/v1/music/album";
-    //private final String token="SFMyNTY.eyJzaWduZWQiOjE1MTI3NTUxODMsImRhdGEiOjJ9.SdNYgEbqz9bUHUyiqDGZ88a5Rz34jZ7-ouQez4J2kls";
 
-    //String[] productos={"Celular","Tablet","Televisor"};
-    List<Album> productos_list =new ArrayList<Album>();
     List<Album> product_list1=new ArrayList<Album>();
     RecyclerView rv_list_product ;
 
@@ -54,9 +51,6 @@ public class AlbumContentFragment extends Fragment {
 
         rv_list_product = view.findViewById(R.id.rvproductos_list);
 
-        Toast toast = Toast.makeText(getContext(), url, Toast.LENGTH_SHORT);
-        toast.show();
-
         load_productos();
     }
 
@@ -67,8 +61,7 @@ public class AlbumContentFragment extends Fragment {
                         new Response.Listener<JSONArray>() {
                             @Override
                             public void onResponse(JSONArray response) {
-                                //Toast.makeText(getContext(), response.toString(), Toast.LENGTH_SHORT).show();
-                                /*System.out.println(response.toString());*/
+
                                 genera_lista(response);
                             }
                         },

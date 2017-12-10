@@ -34,7 +34,7 @@
         <item
             android:icon="@drawable/ic_settings"
             android:tint="@color/button_grey"
-            android:title="Ajustes" />
+            android:title="Perfil" />
         <item
             android:id="@+id/menuAccount"
             android:icon="@drawable/ic_account"

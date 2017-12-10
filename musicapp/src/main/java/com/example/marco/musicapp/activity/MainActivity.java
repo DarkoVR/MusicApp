@@ -17,8 +17,6 @@
 package com.example.marco.musicapp.activity;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -41,6 +39,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.marco.musicapp.R;
+import com.example.marco.musicapp.fragment.AccountContentFragment;
 import com.example.marco.musicapp.fragment.AlbumContentFragment;
 import com.example.marco.musicapp.fragment.EmptyContentFragment;
 import com.example.marco.musicapp.fragment.LoginContentFragment;
@@ -54,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private int count = 0;
     private DrawerLayout mDrawerLayout;
     NavigationView navigationView;
+    String token,user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,8 +113,17 @@ public class MainActivity extends AppCompatActivity {
                                     .replace(R.id.fragment_container, new EmptyContentFragment())
                                     .commit();
 
-                        }else if (menuItem.getTitle().equals("Ajustes")){
+                        }else if (menuItem.getTitle().equals("Perfil")){
                             Toast.makeText(getApplicationContext(), menuItem.getTitle(), Toast.LENGTH_SHORT).show();
+                            if (getToken()!=null){
+                                Toast.makeText(getApplicationContext(), menuItem.getTitle(), Toast.LENGTH_SHORT).show();
+                                getSupportFragmentManager()
+                                        .beginTransaction()
+                                        .replace(R.id.fragment_container, new AccountContentFragment())
+                                        .commit();
+                            }else{
+                                Snackbar.make(getCurrentFocus(), "No has iniciado sesión chavo", Snackbar.LENGTH_LONG).show();
+                            }
 
                         }else if (menuItem.getTitle().equals("Inicia sesion")){
                             Toast.makeText(getApplicationContext(), menuItem.getTitle(), Toast.LENGTH_SHORT).show();
@@ -244,5 +253,21 @@ public class MainActivity extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.fragment_container, new MainContentFragment())
                 .commit();
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 }

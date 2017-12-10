@@ -21,7 +21,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.marco.musicapp.R;
 import com.example.marco.musicapp.activity.MainActivity;
-import com.example.marco.musicapp.web.Session;
 import com.example.marco.musicapp.web.Uri;
 
 import org.json.JSONException;
@@ -35,7 +34,6 @@ public class LoginContentFragment extends Fragment {
     //final String AdminToken="SFMyNTY.eyJzaWduZWQiOjE1MTI4NTI4OTgsImRhdGEiOjN9.0SGXpDztGZGw7VVnt919US5QcE5RY3i8qQ4Ny6YQ2w0";
     String token;
     TextView txtUser,txtPassword;
-    Session session = new Session();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -106,14 +104,12 @@ public class LoginContentFragment extends Fragment {
                         Snackbar.make(getView(), "¡Has iniciado sesión!", Snackbar.LENGTH_LONG).show();
                         //Toast.makeText(getContext(),response.toString(),Toast.LENGTH_SHORT).show();
 
-                        session.setUser(txtUser.getText().toString());
-                        session.setPassword(txtPassword.getText().toString());
                         try {
-                            session.setToken(response.getString("access_token"));
+                            ((MainActivity) getActivity()).setToken(response.getString("access_token"));
+                            ((MainActivity) getActivity()).setUser(txtUser.getText().toString());
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
                         ((MainActivity) getActivity()).ChangeUserAccount(txtUser.getText().toString());
                         ((MainActivity) getActivity()).getSupportFragmentManager()
                                 .beginTransaction()

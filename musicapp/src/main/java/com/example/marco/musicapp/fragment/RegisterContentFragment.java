@@ -129,7 +129,7 @@ public class RegisterContentFragment extends Fragment {
                         //JSONObject responseJSONObject =response.getJSONObject(i);
 
                         //Snackbar.make(getView(), "¡Has iniciado sesión!", Snackbar.LENGTH_LONG).show();
-                        Toast.makeText(getContext(),response.toString(),Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getContext(),response.toString(),Toast.LENGTH_SHORT).show();
 
                     }
                 }, new Response.ErrorListener() {
