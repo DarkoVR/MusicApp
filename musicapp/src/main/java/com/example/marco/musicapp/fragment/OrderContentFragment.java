@@ -2,7 +2,6 @@ package com.example.marco.musicapp.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,9 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -26,74 +22,44 @@ import com.android.volley.toolbox.Volley;
 import com.example.marco.musicapp.R;
 import com.example.marco.musicapp.activity.MainActivity;
 import com.example.marco.musicapp.api.adapter.AlbumAdapter;
+import com.example.marco.musicapp.api.adapter.DiscountAdapter;
+import com.example.marco.musicapp.api.adapter.OrderAdapter;
 import com.example.marco.musicapp.api.model.Album;
+import com.example.marco.musicapp.api.model.Discount;
+import com.example.marco.musicapp.api.model.Order;
 import com.example.marco.musicapp.web.Uri;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AccountContentFragment extends Fragment {
+public class OrderContentFragment extends Fragment {
     private final String url1= Uri.protocol+ Uri.ip+ Uri.port+"/api/v1/auth/sessions";
     private final String url2= Uri.protocol+ Uri.ip+ Uri.port+"/api/v1/auth/users";
-    //final String AdminToken="SFMyNTY.eyJzaWduZWQiOjE1MTI4NTI4OTgsImRhdGEiOjN9.0SGXpDztGZGw7VVnt919US5QcE5RY3i8qQ4Ny6YQ2w0";
-    TextView txtUserR,txtPasswordR,txtName,txtLastName,txtPhone,txtAddress,txtZip,txtCountry,txtmainTopic,tvPassword;
-    DatePicker dtBirth;
-    List<Album> product_list1=new ArrayList<Album>();
+    private final String url3= Uri.protocol+ Uri.ip+ Uri.port+"/api/v1/store/method";
     String AdminToken;
-    //RecyclerView rv_list_product ;
+    String method_name;
+
+    List<Order> orders_list = new ArrayList<Order>();
+    RecyclerView rv_order_list ;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.item_register, container, false);
+        return inflater.inflate(R.layout.activity_main_recicler, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button btRegister = view.findViewById(R.id.btRegister);
-        txtUserR = view.findViewById(R.id.txtUserR);
-        txtPasswordR = view.findViewById(R.id.txtPasswordR);
-        txtName = view.findViewById(R.id.txtName);
-        txtLastName = view.findViewById(R.id.txtLastName);
-        dtBirth = view.findViewById(R.id.dtBirth);
-        txtPhone = view.findViewById(R.id.txtPhone);
-        txtAddress = view.findViewById(R.id.txtAddress);
-        txtZip = view.findViewById(R.id.txtZip);
-        txtCountry = view.findViewById(R.id.txtCountry);
-        txtCountry.setText("MEX");
-        txtmainTopic = view.findViewById(R.id.txtmainTopic);
-        tvPassword = view.findViewById(R.id.tvPassword);
-
-
-        txtmainTopic.setText("Perfil");
-        btRegister.setText("Aceptar");
-        txtPasswordR.setText("123456");
-        //dtBirth.updateDate("", "", "");
-        FloatingActionButton fab = (FloatingActionButton) ((MainActivity) getActivity()).findViewById(R.id.fab);
-        //fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_autorenew));
-        fab.setVisibility(FloatingActionButton.INVISIBLE);
-
-        btRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Snackbar.make(getView(), "¡Datos actualizados!", Snackbar.LENGTH_LONG).show();
-
-                ((MainActivity) getActivity()).getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.fragment_container, new MainContentFragment())
-                        .commit();
-            }
-        });
+        rv_order_list = view.findViewById(R.id.rvproductos_list);
 
         try {
             load_admin();
@@ -161,25 +127,43 @@ public class AccountContentFragment extends Fragment {
         requestQueue.add(jsonArrayRequest);
     }
     public void genera_lista(JSONArray response) {
-        List<String> list =new ArrayList<String>();
         for (int i=0;i<response.length();i++) {
             try {
                 JSONObject jsonObject =response.getJSONObject(i);
 
-                Snackbar.make(getView(), ((MainActivity) getActivity()).getUser(), Snackbar.LENGTH_LONG).show();
                 if (jsonObject.getString("email").equals(((MainActivity) getActivity()).getUser())){
-                    txtUserR.setText(jsonObject.getString("email"));
-                    txtName.setText(jsonObject.getString("name"));
-                    txtLastName.setText(jsonObject.getString("last_name"));
-                    txtPhone.setText(jsonObject.getString("phone"));
-                    txtAddress.setText(jsonObject.getString("location"));
-                    txtZip.setText(jsonObject.getString("postal_code"));
-                    txtCountry.setText(jsonObject.getString("country_code"));
-                }
+                    JSONArray object = jsonObject.getJSONArray("orders");
 
+                    //Metodo que retorne un String con el nombre del metodo
+                    //load_payment(1);
+
+                    for (int j=0;j<object.length();j++){
+                        JSONObject jsonObject1 = object.getJSONObject(j);
+
+                        if (jsonObject1.getInt("payment_id")==1){
+                            method_name="Credit card";
+                        }else{
+                            method_name="Cash o delivery";
+                        }
+
+                        orders_list.add(new Order(
+                                jsonObject1.getString("total"),
+                                method_name,
+                                jsonObject1.getInt("id"),
+                                jsonObject1.getJSONArray("details"),
+                                jsonObject1.getString("date")
+                        ));
+                    }
+                }
             } catch(JSONException e) {
                 e.printStackTrace();
             }
+        }
+        if (orders_list.size()>0){
+            rv_order_list.setAdapter(new OrderAdapter(getContext(), orders_list));
+            rv_order_list.setLayoutManager(new LinearLayoutManager(getContext()));
+        }else{
+            Snackbar.make(getView(),"No existe historial de ordenes",Snackbar.LENGTH_LONG).show();
         }
     }
 }

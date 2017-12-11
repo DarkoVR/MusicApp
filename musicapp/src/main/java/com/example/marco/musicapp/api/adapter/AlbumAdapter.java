@@ -16,17 +16,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by niluxer on 11/12/17.
+ * Created by marco on 11/12/17.
  */
 
 public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ProductHolder> {
 
     Context context;
-    List<Album> productList = new ArrayList<>();
+    List<Album> albumList = new ArrayList<>();
 
     public AlbumAdapter(Context context, List<Album> productList){
         this.context = context;
-        this.productList = productList;
+        this.albumList = productList;
     }
 
     @Override
@@ -34,11 +34,12 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ProductHolde
         View view = LayoutInflater.from(context).inflate(R.layout.album_row, parent, false);
         ProductHolder productHolder = new ProductHolder(view);
         return productHolder;
+
     }
 
     @Override
     public void onBindViewHolder(ProductHolder holder, int position) {
-        Album product = productList.get(position);
+        Album product = albumList.get(position);
         holder.tvProductName.setText(product.getTitle());
         holder.tvProductQuantity.setText(product.getTracklist() + "");
 
@@ -48,7 +49,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ProductHolde
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        return albumList.size();
     }
 
     class ProductHolder extends RecyclerView.ViewHolder{

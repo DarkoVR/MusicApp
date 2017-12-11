@@ -3,7 +3,7 @@ package com.example.marco.musicapp.api.model;
 import org.json.JSONArray;
 
 /**
- * Created by adrian on 14/11/17.
+ * Created by marco on 14/11/17.
  */
 
 public class Album {

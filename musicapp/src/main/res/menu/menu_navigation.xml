@@ -29,18 +29,9 @@
             android:tint="@color/button_grey"
             android:title="Para ti" />
     </group>
-    <group android:checkableBehavior="single"
-        android:id="@+id/menu_bottom">
-        <item
-            android:icon="@drawable/ic_settings"
-            android:tint="@color/button_grey"
-            android:title="Perfil" />
-        <item
-            android:id="@+id/menuAccount"
-            android:icon="@drawable/ic_account"
-            android:tint="@color/button_grey"
-            android:title="Inicia sesion" />
-    </group>
     <item
-        android:title="Enviar un comentario" />
+        android:id="@+id/menuAccount"
+        android:icon="@drawable/ic_account"
+        android:tint="@color/button_grey"
+        android:title="Inicia sesión" />
 </menu>

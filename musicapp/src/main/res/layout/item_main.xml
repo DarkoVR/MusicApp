@@ -32,7 +32,7 @@
                     android:layout_marginTop="56dp"
                     android:layout_height="200dp"
                     android:layout_width="match_parent"
-                    android:background="@mipmap/a"/>
+                    android:background="@drawable/banner2"/>
 
                 <Button
                     android:id="@+id/btReproducir"
@@ -40,14 +40,14 @@
                     android:layout_margin="20dp"
                     android:layout_width="100dp"
                     android:layout_height="60dp"
-                    android:text="Conocer genero 'Rock'"
+                    android:text="MusicApp la capital de la musica"
                     app:srcCompat="@drawable/ic_account"
                     tools:ignore="VectorDrawableCompat" />
 
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:text="Conocenos"
+                    android:text="Solo la mejor musica"
                     android:textSize="30dp"
                     android:gravity="center"
                     android:layout_gravity="center"
@@ -56,45 +56,69 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    android:text="Cientos y cientos de canciones
+ directamente a la palma de tu mano,
+ ¡No esperes más para escuchar a tu artista favorito!"
                     android:textSize="20dp"
                     android:gravity="center"
                     android:padding="3dip"
                     android:layout_gravity="center"
                     android:textAlignment="center"/>
 
+                <ImageView
+                    android:layout_marginTop="56dp"
+                    android:layout_height="200dp"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/banner"/>
+
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:text="¿Cual es tu genero favorito?"
+                    android:text="Los mejores descuentos"
                     android:textSize="25dp"
+                    android:layout_margin="20dp"
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:textColor="@color/teal"/>
 
-                <TableRow>
-                    <ImageView
-                        android:layout_height="50dp"
-                        android:layout_width="60dp"
-                        android:src="@mipmap/a"/>
-                    <TextView
-                        android:layout_height="match_parent"
-                        android:layout_width="match_parent"
-                        android:text="Rock"
-                        android:textSize="30dp"
-                        android:gravity="right"
-                        android:padding="3dip"
-                        android:layout_gravity="center"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="En MusicApp tenemos los mejores
+descuentos consigue la musica que
+más te gusta al mejor precio"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:padding="3dip"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"/>
 
-                    <CheckBox
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:checked="false" />
-                </TableRow>
+                <ImageView
+                    android:layout_marginTop="56dp"
+                    android:layout_height="200dp"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/banner3"/>
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="¿Tienes un genero favorito?"
+                    android:textSize="25dp"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="@color/teal"/>
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="Estamos seguro que aquí
+lo encontraras"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:padding="3dip"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:layout_marginBottom="80dp"/>
             </TableLayout>
         </ScrollView>

@@ -17,6 +17,7 @@
 package com.example.marco.musicapp.activity;
 
 import android.annotation.SuppressLint;
+import android.content.ClipData;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -34,6 +35,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,9 +43,11 @@ import android.widget.Toast;
 import com.example.marco.musicapp.R;
 import com.example.marco.musicapp.fragment.AccountContentFragment;
 import com.example.marco.musicapp.fragment.AlbumContentFragment;
+import com.example.marco.musicapp.fragment.DiscountContentFragment;
 import com.example.marco.musicapp.fragment.EmptyContentFragment;
 import com.example.marco.musicapp.fragment.LoginContentFragment;
 import com.example.marco.musicapp.fragment.MainContentFragment;
+import com.example.marco.musicapp.fragment.OrderContentFragment;
 
 
 /**
@@ -108,15 +112,11 @@ public class MainActivity extends AppCompatActivity {
                         }else if (menuItem.getTitle().equals("Para ti")){
                             Toast.makeText(getApplicationContext(), menuItem.getTitle(), Toast.LENGTH_SHORT).show();
 
-                            getSupportFragmentManager()
-                                    .beginTransaction()
-                                    .replace(R.id.fragment_container, new EmptyContentFragment())
-                                    .commit();
-
                         }else if (menuItem.getTitle().equals("Perfil")){
                             Toast.makeText(getApplicationContext(), menuItem.getTitle(), Toast.LENGTH_SHORT).show();
                             if (getToken()!=null){
                                 Toast.makeText(getApplicationContext(), menuItem.getTitle(), Toast.LENGTH_SHORT).show();
+
                                 getSupportFragmentManager()
                                         .beginTransaction()
                                         .replace(R.id.fragment_container, new AccountContentFragment())
@@ -125,13 +125,39 @@ public class MainActivity extends AppCompatActivity {
                                 Snackbar.make(getCurrentFocus(), "No has iniciado sesión chavo", Snackbar.LENGTH_LONG).show();
                             }
 
-                        }else if (menuItem.getTitle().equals("Inicia sesion")){
+                        }else if (menuItem.getTitle().equals("Inicia sesión")){
                             Toast.makeText(getApplicationContext(), menuItem.getTitle(), Toast.LENGTH_SHORT).show();
 
                             getSupportFragmentManager()
                                     .beginTransaction()
                                     .replace(R.id.fragment_container, new LoginContentFragment())
                                     .commit();
+
+                        }if (menuItem.getTitle().equals("Cupones")){
+                            Toast.makeText(getApplicationContext(), menuItem.getTitle(), Toast.LENGTH_SHORT).show();
+
+                            getSupportFragmentManager()
+                                    .beginTransaction()
+                                    .replace(R.id.fragment_container, new DiscountContentFragment())
+                                    .commit();
+
+                        }if (menuItem.getTitle().equals("Ordenes")){
+                            Toast.makeText(getApplicationContext(), menuItem.getTitle(), Toast.LENGTH_SHORT).show();
+
+                            getSupportFragmentManager()
+                                    .beginTransaction()
+                                    .replace(R.id.fragment_container, new OrderContentFragment())
+                                    .commit();
+
+                        }if (menuItem.getTitle().equals("Cerrar sesión")){
+                            Toast.makeText(getApplicationContext(), menuItem.getTitle(), Toast.LENGTH_SHORT).show();
+
+                            setToken("");
+                            setUser("");
+                            ChangeUserAccount("Invitado");
+                            removeMenuItems();
+
+                            Snackbar.make(getCurrentFocus(),"¡Sesión Cerrada!",Snackbar.LENGTH_LONG).show();
 
                         }else{
                             Toast.makeText(getApplicationContext(), menuItem.getTitle(), Toast.LENGTH_SHORT).show();
@@ -151,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Snackbar.make(v, "Información sin sentido!", Snackbar.LENGTH_LONG).show();
                 //doIncrease();
-                //ChangeUserAccount("Buenas tardes");
+                //addMenuItems();
             }
         });
     }
@@ -269,5 +295,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    public void addMenuItems(){
+        final Menu menu = navigationView.getMenu();
+        final SubMenu subMenu = menu.addSubMenu("Cuenta");
+            subMenu.add("Perfil");
+            subMenu.add("Cupones");
+            subMenu.add("Ordenes");
+
+            navigationView.getMenu().getItem(3).setTitle("Cerrar sesión");
+    }
+
+    public void removeMenuItems(){
+        navigationView.getMenu().removeGroup(0);
+        navigationView.getMenu().add("Inicia sesión");
+        navigationView.getMenu().getItem(3).setIcon(R.drawable.ic_account);
     }
 }

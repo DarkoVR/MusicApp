@@ -110,6 +110,8 @@ public class LoginContentFragment extends Fragment {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+
+                        ((MainActivity) getActivity()).addMenuItems();
                         ((MainActivity) getActivity()).ChangeUserAccount(txtUser.getText().toString());
                         ((MainActivity) getActivity()).getSupportFragmentManager()
                                 .beginTransaction()

@@ -83,13 +83,9 @@ public class AlbumContentFragment extends Fragment {
         requestQueue.add(jsonArrayRequest);
     }
     public void genera_lista(JSONArray response) {
-        List<String> list =new ArrayList<String>();
         for (int i=0;i<response.length();i++) {
             try {
                 JSONObject jsonObject =response.getJSONObject(i);
-                String dateStr = jsonObject.getString("release");
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                JSONArray arr2 = jsonObject.getJSONArray("tracklist");
 
                 product_list1.add(new Album(
                         jsonObject.getString("title"),
@@ -100,7 +96,7 @@ public class AlbumContentFragment extends Fragment {
                         jsonObject.getString("release"),
                         jsonObject.getJSONArray("tracklist")
                 ));
-                list.add(jsonObject.getString("name"));
+                //list.add(jsonObject.getString("name"));
             } catch(JSONException e) {
                 e.printStackTrace();
             }
