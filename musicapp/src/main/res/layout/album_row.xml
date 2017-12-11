@@ -69,7 +69,7 @@
             tools:ignore="VectorDrawableCompat" />
 
         <ImageButton
-            android:id="@+id/add_button2"
+            android:id="@+id/add_button"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="@dimen/cards_button_width"
             android:layout_height="@dimen/cards_button_height"

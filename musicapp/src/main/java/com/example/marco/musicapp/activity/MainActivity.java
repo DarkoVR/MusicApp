@@ -43,6 +43,7 @@ import android.widget.Toast;
 import com.example.marco.musicapp.R;
 import com.example.marco.musicapp.fragment.AccountContentFragment;
 import com.example.marco.musicapp.fragment.AlbumContentFragment;
+import com.example.marco.musicapp.fragment.CartContentFragment;
 import com.example.marco.musicapp.fragment.DiscountContentFragment;
 import com.example.marco.musicapp.fragment.EmptyContentFragment;
 import com.example.marco.musicapp.fragment.LoginContentFragment;
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     NavigationView navigationView;
     String token,user;
+    int idDetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -204,8 +206,13 @@ public class MainActivity extends AppCompatActivity {
         } else if (id == android.R.id.home) {
             mDrawerLayout.openDrawer(GravityCompat.START);
         } else if (id == R.id.testAction) {
-            Toast toast = Toast.makeText(getApplicationContext(), "Has tocado el carrito", Toast.LENGTH_SHORT);
-            toast.show();
+            Toast.makeText(getApplicationContext(), "Carrito", Toast.LENGTH_SHORT).show();
+
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, new CartContentFragment())
+                    .commit();
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -260,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
             count--;
             invalidateOptionsMenu();
         }else{
-            Toast toast = Toast.makeText(getApplicationContext(), "Que paso chavo? cuando te he faltado al respeto", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getApplicationContext(), "No tienes elementos en tu carrito", Toast.LENGTH_SHORT);
             toast.show();
         }
     }
@@ -295,6 +302,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    public int getIdDetail() {
+        return idDetail;
+    }
+
+    public void setIdDetail(int idDetail) {
+        this.idDetail = idDetail;
     }
 
     public void addMenuItems(){
