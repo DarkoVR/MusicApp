@@ -143,7 +143,7 @@ public class OrderContentFragment extends Fragment {
                         if (jsonObject1.getInt("payment_id")==1){
                             method_name="Credit card";
                         }else{
-                            method_name="Cash o delivery";
+                            method_name="Cash on delivery";
                         }
 
                         orders_list.add(new Order(

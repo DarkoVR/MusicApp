@@ -56,6 +56,7 @@ public class DetailContentFragment extends Fragment {
         imageView = view.findViewById(R.id.tv_detail_image);
 
         FloatingActionButton fab = (FloatingActionButton) ((MainActivity) getActivity()).findViewById(R.id.fab);
+        fab.setVisibility(FloatingActionButton.VISIBLE);
         fab.setImageDrawable(getResources().getDrawable(R.drawable.ic_action_cart_white));
         //fab.setVisibility(FloatingActionButton.INVISIBLE);
 

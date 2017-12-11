@@ -41,6 +41,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.marco.musicapp.R;
+import com.example.marco.musicapp.api.model.ShoppingCart;
 import com.example.marco.musicapp.fragment.AccountContentFragment;
 import com.example.marco.musicapp.fragment.AlbumContentFragment;
 import com.example.marco.musicapp.fragment.CartContentFragment;
@@ -49,6 +50,9 @@ import com.example.marco.musicapp.fragment.EmptyContentFragment;
 import com.example.marco.musicapp.fragment.LoginContentFragment;
 import com.example.marco.musicapp.fragment.MainContentFragment;
 import com.example.marco.musicapp.fragment.OrderContentFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -59,7 +63,9 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     NavigationView navigationView;
     String token,user;
-    int idDetail;
+    int idDetail,idPayment,idUser;
+    ShoppingCart shoppingCart;
+    List<ShoppingCart> shoppingCartList = new ArrayList<ShoppingCart>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -272,6 +278,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Void to decrease the number in the cart vector asset
+     */
+    @SuppressLint("RestrictedApi")
+    public void doClear() {
+        count=0;
+        invalidateOptionsMenu();
+    }
+
     @SuppressLint("ResourceAsColor")
     public void ChangeUserAccount(String name){
         View hView =  navigationView.getHeaderView(0);
@@ -286,6 +301,22 @@ public class MainActivity extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.fragment_container, new MainContentFragment())
                 .commit();
+    }
+
+    public void addMenuItems(){
+        final Menu menu = navigationView.getMenu();
+        final SubMenu subMenu = menu.addSubMenu("Cuenta");
+        subMenu.add("Perfil");
+        subMenu.add("Cupones");
+        subMenu.add("Ordenes");
+
+        navigationView.getMenu().getItem(3).setTitle("Cerrar sesión");
+    }
+
+    public void removeMenuItems(){
+        navigationView.getMenu().removeGroup(0);
+        navigationView.getMenu().add("Inicia sesión");
+        navigationView.getMenu().getItem(3).setIcon(R.drawable.ic_account);
     }
 
     public String getToken() {
@@ -312,19 +343,28 @@ public class MainActivity extends AppCompatActivity {
         this.idDetail = idDetail;
     }
 
-    public void addMenuItems(){
-        final Menu menu = navigationView.getMenu();
-        final SubMenu subMenu = menu.addSubMenu("Cuenta");
-            subMenu.add("Perfil");
-            subMenu.add("Cupones");
-            subMenu.add("Ordenes");
-
-            navigationView.getMenu().getItem(3).setTitle("Cerrar sesión");
+    public List<ShoppingCart> getShoppingCartList() {
+        return shoppingCartList;
     }
 
-    public void removeMenuItems(){
-        navigationView.getMenu().removeGroup(0);
-        navigationView.getMenu().add("Inicia sesión");
-        navigationView.getMenu().getItem(3).setIcon(R.drawable.ic_account);
+    public void setShoppingCartList(List<ShoppingCart> shoppingCartListFK) {
+        this.shoppingCartList = shoppingCartList;
+        //shoppingCartList.add(shoppingCartListFK.get(0));
+    }
+
+    public int getIdPayment() {
+        return idPayment;
+    }
+
+    public void setIdPayment(int idPayment) {
+        this.idPayment = idPayment;
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 }

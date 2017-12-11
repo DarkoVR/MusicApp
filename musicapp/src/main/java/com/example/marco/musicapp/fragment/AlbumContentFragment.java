@@ -2,6 +2,7 @@ package com.example.marco.musicapp.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.marco.musicapp.R;
+import com.example.marco.musicapp.activity.MainActivity;
 import com.example.marco.musicapp.api.adapter.AlbumAdapter;
 import com.example.marco.musicapp.api.model.Album;
 import com.example.marco.musicapp.web.Uri;
@@ -49,6 +51,10 @@ public class AlbumContentFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         rv_list_product = view.findViewById(R.id.rvproductos_list);
+
+        // Adding Floating Action Button to bottom right of main view
+        FloatingActionButton fab = (FloatingActionButton) ((MainActivity) getActivity()).findViewById(R.id.fab);
+        fab.setVisibility(FloatingActionButton.INVISIBLE);
 
         load_productos();
     }

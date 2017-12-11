@@ -22,29 +22,29 @@
     android:padding="@dimen/md_keylines">
 
     <ImageView
-        android:id="@+id/list_avatar"
+        android:id="@+id/tv_cart_image"
         android:layout_width="@dimen/avator_size"
         android:layout_height="@dimen/avator_size"
         android:scaleType="centerCrop"
         tools:src="@drawable/a_avator" />
 
     <TextView
-        android:id="@+id/list_title"
+        android:id="@+id/tv_cart_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/md_keylines"
-        android:layout_toRightOf="@+id/list_avatar"
+        android:layout_toRightOf="@+id/tv_cart_image"
         tools:text="@string/item_title"
         android:textAppearance="?attr/textAppearanceListItem"
         android:textSize="@dimen/article_subheading" />
 
     <TextView
-        android:id="@+id/list_desc"
+        android:id="@+id/tv_cart_quantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/list_title"
+        android:layout_below="@+id/tv_cart_title"
         android:layout_marginLeft="@dimen/md_keylines"
-        android:layout_toRightOf="@+id/list_avatar"
+        android:layout_toRightOf="@+id/tv_cart_image"
         android:textColor="@color/medium_grey"
         android:ellipsize="end"
         android:singleLine="true"
