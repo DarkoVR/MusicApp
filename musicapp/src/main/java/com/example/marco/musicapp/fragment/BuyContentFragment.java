@@ -175,14 +175,23 @@ public class BuyContentFragment extends Fragment {
             total=total+precio;
         }
 
-        Toast.makeText(getContext(),"Total: "+total,Toast.LENGTH_SHORT).show();
+        int Total1=total;
+        int descuento;
+        //Toast.makeText(getContext(),"Total: "+total,Toast.LENGTH_SHORT).show();
 
         if (((MainActivity) getActivity()).getIdDiscount()!=0){
             jsonObject.put("discount_id",((MainActivity) getActivity()).getIdDiscount());
             total=total-(total*((MainActivity) getActivity()).getPercentage_value())/100;
         }
 
-        Toast.makeText(getContext(),"Descuento aplicado: "+total,Toast.LENGTH_SHORT).show();
+        descuento=Total1-total;
+        if (((MainActivity) getActivity()).getIdDiscount()!=0){
+            Toast.makeText(getContext(),"Has ahorrado: $"+descuento,Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getContext(),"¡Disfruta tu nueva musica!",Toast.LENGTH_SHORT).show();
+        }
+
+        //Toast.makeText(getContext(),"Descuento aplicado: "+total,Toast.LENGTH_SHORT).show();
 
         jsonObject.put("total",total);
         jsonObject.put("date", "2017-12-11T00:00:00Z");
