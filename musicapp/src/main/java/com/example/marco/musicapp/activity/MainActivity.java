@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     NavigationView navigationView;
     String token,user;
-    int idDetail,idPayment,idUser;
+    int idDetail,idPayment,idUser,idDiscount,percentage_value;
     ShoppingCart shoppingCart;
     List<ShoppingCart> shoppingCartList = new ArrayList<ShoppingCart>();
 
@@ -366,5 +366,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void setIdUser(int idUser) {
         this.idUser = idUser;
+    }
+
+    public int getIdDiscount() {
+        return idDiscount;
+    }
+
+    public void setIdDiscount(int idDiscount) {
+        this.idDiscount = idDiscount;
+    }
+
+    public int getPercentage_value() {
+        return percentage_value;
+    }
+
+    public void setPercentage_value(int percentage_value) {
+        this.percentage_value = percentage_value;
     }
 }

@@ -43,7 +43,7 @@ public class PaymentContentFragment extends Fragment {
                 ((MainActivity) getActivity()).setIdPayment(1);
                 ((MainActivity) getActivity()).getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.fragment_container, new BuyContentFragment())
+                        .replace(R.id.fragment_container, new DiscountDinamicContentFragment())
                         .commit();
             }
         });
@@ -55,7 +55,7 @@ public class PaymentContentFragment extends Fragment {
                 ((MainActivity) getActivity()).setIdPayment(2);
                 ((MainActivity) getActivity()).getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.fragment_container, new BuyContentFragment())
+                        .replace(R.id.fragment_container, new DiscountDinamicContentFragment())
                         .commit();
             }
         });

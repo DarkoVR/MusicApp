@@ -175,6 +175,15 @@ public class BuyContentFragment extends Fragment {
             total=total+precio;
         }
 
+        Toast.makeText(getContext(),"Total: "+total,Toast.LENGTH_SHORT).show();
+
+        if (((MainActivity) getActivity()).getIdDiscount()!=0){
+            jsonObject.put("discount_id",((MainActivity) getActivity()).getIdDiscount());
+            total=total-(total*((MainActivity) getActivity()).getPercentage_value())/100;
+        }
+
+        Toast.makeText(getContext(),"Descuento aplicado: "+total,Toast.LENGTH_SHORT).show();
+
         jsonObject.put("total",total);
         jsonObject.put("date", "2017-12-11T00:00:00Z");
         jsonObject.put("payment_id",((MainActivity) getActivity()).getIdPayment());
